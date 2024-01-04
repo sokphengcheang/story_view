@@ -619,6 +619,7 @@ class StoryViewState extends State<StoryView> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Container(
       color: Colors.white,
       child: Stack(
@@ -654,9 +655,11 @@ class StoryViewState extends State<StoryView> with TickerProviderStateMixin {
               ),
             ),
           ),
-          Align(
-              alignment: Alignment.centerRight,
-              heightFactor: 1,
+           Align(
+            alignment: Alignment.centerRight,
+            heightFactor: 1,
+            child: SizedBox(
+              width: size.width * 0.4,
               child: GestureDetector(
                 onTapDown: (details) {
                   widget.controller.pause();
@@ -706,15 +709,18 @@ class StoryViewState extends State<StoryView> with TickerProviderStateMixin {
 
                         verticalDragInfo = null;
                       },
-              )),
+              ),
+            ),
+          ),
           Align(
             alignment: Alignment.centerLeft,
             heightFactor: 1,
             child: SizedBox(
-                child: GestureDetector(onTap: () {
-                  widget.controller.previous();
-                }),
-                width: 70),
+              child: GestureDetector(onTap: () {
+                widget.controller.previous();
+              }),
+              width: size.width * 0.25,
+            ),
           ),
         ],
       ),
