@@ -661,6 +661,9 @@ class StoryViewState extends State<StoryView> with TickerProviderStateMixin {
             child: SizedBox(
               width: size.width * 0.4,
               child: GestureDetector(
+                onDoubleTap: () {
+                  widget.controller.next();
+                },
                 onTapDown: (details) {
                   widget.controller.pause();
                 },
